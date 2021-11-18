@@ -33,3 +33,5 @@ Route::get('/getCitysAll', [App\Http\Controllers\HomeController::class, 'ambilDa
 Route::get('/getDistrict/{city_id}', [App\Http\Controllers\HomeController::class, 'getDistrict'] );
 // GET Kelurahan
 Route::get('/getVillages/{district_id}', [App\Http\Controllers\HomeController::class, 'getVillages'] );
+
+
