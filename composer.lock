@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b90ba80d985b17a8e301dfe607254e44",
+    "content-hash": "8ecead6c05b1b8a2ecf07a1f23aa2ba3",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -1595,6 +1595,65 @@
                 "source": "https://github.com/Maatwebsite/Laravel-Excel/tree/2.1"
             },
             "time": "2018-09-04T19:00:09+00:00"
+        },
+        {
+            "name": "matriphe/laraciproid",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matriphe/laraciproid.git",
+                "reference": "8874afce2ee7981dbcc928ddab77cba35affa253"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matriphe/laraciproid/zipball/8874afce2ee7981dbcc928ddab77cba35affa253",
+                "reference": "8874afce2ee7981dbcc928ddab77cba35affa253",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "illuminate/database": "5.*",
+                "illuminate/support": "5.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Matriphe\\Laraciproid\\ServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Matriphe\\Laraciproid\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Muhammad Zamroni",
+                    "email": "halo@matriphe.com"
+                }
+            ],
+            "description": "Indonesia city and province data migration and seeder for Laravel.",
+            "keywords": [
+                "city",
+                "data",
+                "id",
+                "ina",
+                "indonesia",
+                "laravel",
+                "province",
+                "seeder"
+            ],
+            "support": {
+                "issues": "https://github.com/matriphe/laraciproid/issues",
+                "source": "https://github.com/matriphe/laraciproid/tree/master"
+            },
+            "time": "2017-09-07T05:25:22+00:00"
         },
         {
             "name": "monolog/monolog",

@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\HomeModel;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+use App\Models\Province;
+use App\Models\City;
+use App\Models\Kecamatan;
+use App\Models\Kelurahan;
 class HomeController extends Controller
 {
 
@@ -14,7 +18,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-
+    
     // UNTUK AKSES LOGIN 
     // public function __construct()
     // {
@@ -28,17 +32,51 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //
-        // return view('layouts.home.home-admin',compact(
-        //     'slider','slider_count',
-        //     'blogs' , 'blogs_count',
-        //     'products','products_count',
-        //     'user','user_count'
 
-        // ));
 
-        return view('layout.dashboard.index');
+    //GET ALL PROVINCE
+        $provincess = Province::orderby("name","asc")
+                    ->select('id','name')->where('id',36)->get();
+    //    
+        $city= City::orderby("name","asc")
+                    ->select('id','name')->whereIn('id',[3671,3674])->get();
+
+       
+        return view('layout.dashboard.index',compact('provincess','city'));
     }
+
+
+    public function getCitys($province_id){
+
+        $citysData['data'] = City::orderby("name","asc")
+                   ->select('province_id','name')
+                   ->where('province_id',$province_id)
+                   ->get();
+        echo( $citysData['data']);exit;
+       return response()->json($citysData);
+   }
+
+
+   public function getDistrict($city_id){
+
+    $districtData['data'] = Kecamatan::orderby("name","asc")
+               // ->select('province_id','id','name')
+               ->where('city_id',$city_id)
+               ->get();
+    // echo( $citysData['data']);exit;
+   return response()->json($districtData);
+}
+
+public function getVillages($district_id){
+
+        $villagesData['data'] = Kelurahan::orderby("name","asc")
+                // ->select('province_id','id','name')
+                ->where('district_id',$district_id)
+                ->get();
+        
+        // echo( $citysData['data']);exit;
+        return response()->json($villagesData);
+}
 
     /**
      * Show the form for creating a new resource.

@@ -16,6 +16,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+  <!-- CSS SELECT2 -->
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <!-- INI BAWAAN TEMPLATE -->
 <!-- <body class="hold-transition sidebar-mini"> -->
@@ -44,9 +47,11 @@
     <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <!-- jQuery -->
 <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
+
+
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <!-- DataTables  & Plugins -->
@@ -68,6 +73,10 @@
 <script src="{{ asset('dist/js/demo.js') }}"></script>
 <!-- Page specific script -->
 <script>
+
+$(document).ready(function() {
+    $('.js-example-basic-single').select2();
+});
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": true, "autoWidth": false,
@@ -86,5 +95,133 @@
     });
   });
 </script>
+
+<script type="text/javascript">
+         $(document).ready(function() {
+              // Province change
+
+              $('#province').change(function(){
+
+                  // Province id
+                  var id =  $(this).val();
+                  var province_id =  $(this).val();
+                  var base_url = '{{ url("/getCitys") }}';
+                  if (province_id.value !== '') {
+                    ajaxUrl = base_url.replace('-1',province_id.value);
+                  }
+                  console.log(id);
+                  console.log(province_id);
+
+                  // Empty DropDown
+                  $('#city').find('option').not(':first').remove();
+
+                  // AJAX Request
+                  $.ajax({
+                      url: ajaxUrl + '/' + province_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success : function(response){
+
+                          console.log(province_id);
+                          var len = 0;
+                          if(response != null){
+                              len = response.length;
+                          }
+
+                          if(len > 0) {
+
+                              // Read Data Create Option
+                              for(var i=0; i<len; i++) {
+                                  var province_id = response[i].province_id;
+                                  var name = response[i].name;
+                                  var city_id = response[i].id;
+                                  var option = "<option value='"+city_id+"'>"+name+"</option>";
+
+                              $("#city").append(option);
+                              }
+                          }
+                      }
+                  })
+
+
+              })
+
+              $('#city').change(function(){
+                  var city_id =  $(this).val();
+
+                  $('#district').find('option').not(':first').remove();
+                  var base_url = '{{ url("/getDistrict") }}';
+                  if (city_id.value !== '') {
+                    ajaxUrl = base_url.replace('-1',city_id.value);
+                  }
+                  // AJAX Request
+                  $.ajax({
+                      url: ajaxUrl + '/' + city_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success : function(res){
+                        console.log(city_id);
+
+                          var len = 0;
+                          if(res != null){
+                              len = res.data.length;
+                          }
+
+                          if(len > 0) {
+                              // Read Data Create Option
+                              for(var i=0; i<len; i++) {
+                                  var city_id = res.data[i].city_id;
+                                  var name = res.data[i].name;
+                                  var district_id = res.data[i].id;
+                                  var option = "<option value='"+district_id+"'>"+name+"</option>";
+
+                              $("#district").append(option);
+                              }
+                          }
+                      }
+                  })
+
+              })
+
+              $('#district').change(function(){
+                  var district_id =  $(this).val();
+                  var base_url = '{{ url("/getVillages/") }}';
+                  if (district_id.value !== '') {
+                    ajaxUrl = base_url.replace('-1',district_id.value);
+                  }
+                  
+                  $('#villages').find('option').not(':first').remove();
+                 
+                  console.log(district_id);
+                  // AJAX Request
+                  $.ajax({
+                      url: ajaxUrl + '/' + district_id,
+                      type: 'GET',
+                      dataType: 'json',
+                      success : function(res){
+                        
+
+                          var len = 0;
+                          if(res != null){
+                              len = res.data.length;
+                          }
+
+                          if(len > 0) {
+                              // Read Data Create Option
+                              for(var i=0; i<len; i++) {
+                                  var district_id = res.data[i].city_id;
+                                  var name = res.data[i].name;
+                                  var villages_id = res.data[i].id;
+                                  var option = "<option value='"+villages_id+"'>"+name+"</option>";
+
+                              $("#villages").append(option);
+                              }
+                          }
+                      }
+                  })
+
+              })
+         })
+     </script>
 </body>
 </html>

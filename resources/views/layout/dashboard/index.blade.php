@@ -8,7 +8,7 @@
     <section id="minimal-statistics">
         <div class="row">
         <div class="col-12 mt-3 mb-1">
-            <div class="alert alert-success">
+            <div class="alert alert-success bg-cyan">
             WELCOME , ADMIN
             </div>
             
@@ -145,6 +145,24 @@
             </div>
             </div>
         </div>
+
+        <div class="col-xl-3 col-sm-6 col-12">
+            <div class="card">
+            <div class="card-content">
+                <div class="card-body">
+                <div class="media d-flex">
+                    <div class="media-body text-left">
+                    <h3 class="danger">278</h3>
+                    <span>DAFTAR USER</span>
+                    </div>
+                    <div class="align-self-center">
+                    <img class="gambar-side" src="{{ asset('image/man.png') }}" alt="">
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
      
         </div>
     
@@ -168,8 +186,27 @@
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
-                <button type="button" class="btn btn-primary">Tambah Data</button>&nbsp;
-                <button type="button" class="btn btn-success">Import Data</button>&nbsp;
+               
+
+                  <div class="dropdown">
+                    
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                  Tambah Data</button>&nbsp;  
+
+                  <button type="button" class="btn btn-info">
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  Export</button>&nbsp; 
+
+                  <button type="button" class="btn btn-success dropdown-toggle" d="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa fa-file" aria-hidden="true"></i>
+                  Export Data</button>&nbsp;
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="#"><img class="img-drop" src="{{ asset('image/excel.png') }}" alt=""> EXCEL</a>
+                      <a class="dropdown-item" href="#"><img class="img-drop" src="{{ asset('image/pdf-file.png') }}" alt=""> PDF</a>
+                    </div>
+                  </div>
+               
                 <br><br>
                 <thead>
                   <tr>
@@ -611,7 +648,7 @@
       <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-    
+    @include('layout.modal.modal')
       
     </div>
     </div>

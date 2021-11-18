@@ -57,8 +57,8 @@
         <!-- Notifications Dropdown Menu -->
         <li class="nav-item dropdown px-1">
        
-          <a class="nav-link" data-toggle="dropdown" href="#">
-          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle border right-img">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
+          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle border right-img dropdown-toggle">
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <span class="dropdown-header">chrryctr1509@gmail.com&nbsp; |  &nbsp;Admin</span>
