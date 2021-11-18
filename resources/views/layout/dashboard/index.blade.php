@@ -162,14 +162,16 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">DAFTAR DATA RUMAH IBADAH</h3>
+                <h3 class="card-title">DAFTAR DATA RUMAH IBADAH - Wilayah Kabupaten Tangerang</h3>
+                
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                 <button type="button" class="btn btn-primary">Tambah Data</button>&nbsp;
                 <button type="button" class="btn btn-success">Import Data</button>&nbsp;
-                  <thead>
+                <br><br>
+                <thead>
                   <tr>
                     <th>Rendering engine</th>
                     <th>Browser</th>
