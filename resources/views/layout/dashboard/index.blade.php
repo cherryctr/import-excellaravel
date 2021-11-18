@@ -9,7 +9,7 @@
         <div class="row">
         <div class="col-12 mt-3 mb-1">
             <div class="alert alert-success bg-cyan">
-            WELCOME , ADMIN
+            WELCOME , {{ Auth::user()->name }}
             </div>
             
            

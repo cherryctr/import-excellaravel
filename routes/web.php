@@ -18,8 +18,15 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::get('/proses/logout',  [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
+    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+
+
+});
 
 
 // GET PROVINSI  - KOTA
@@ -35,3 +42,13 @@ Route::get('/getDistrict/{city_id}', [App\Http\Controllers\HomeController::class
 Route::get('/getVillages/{district_id}', [App\Http\Controllers\HomeController::class, 'getVillages'] );
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// ADD USER
+Route::post('/add/post/users', [App\Http\Controllers\UserController::class, 'prosestambahuser'])->name('postdatauser');
+// DeleteUSER
+
+Route::get('/user/hapus/{id}',[App\Http\Controllers\UserController::class, 'hapusDataUser'])->name('hapusdatauser');

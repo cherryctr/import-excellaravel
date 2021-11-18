@@ -26,13 +26,16 @@
             </a>
            
         </li>
-
+      
+        @if (Auth::user()->level == 0)
         <li class="nav-item nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">
+            <a href="{{ url('/users') }}" class="nav-link">
               <i class="nav-icon fas fa-users"></i>&nbsp;Tambah Users
             </a>
            
         </li>
+        @endif
+     
         </ul>
 
         <!-- SEARCH FORM -->
@@ -58,13 +61,20 @@
         <li class="nav-item dropdown px-1">
        
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle border right-img dropdown-toggle">
+          <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle border right-img dropdown-toggle"> -->
+          {{ Auth::user()->name }}
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-header">chrryctr1509@gmail.com&nbsp; |  &nbsp;Admin</span>
+
+          @if (Auth::user()->level == 0)
+          <span class="dropdown-header">{{ Auth::user()->email }}&nbsp; |  &nbsp;Admin</span>
+          @else
+          <span class="dropdown-header">{{ Auth::user()->email }}&nbsp; |  &nbsp;User</span>
+          @endif
+            
            
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">Log Out</a>
+            <a href="{{ url('proses/logout') }}" class="dropdown-item dropdown-footer">Log Out</a>
           </div>
         </li>
        

@@ -2,33 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\HomeModel;
 use Illuminate\Http\Request;
+use App\HomeModel;
+
 use Illuminate\Support\Facades\DB;
 use App\Models\Province;
 use App\Models\City;
 use App\Models\Kecamatan;
 use App\Models\Kelurahan;
+
 class HomeController extends Controller
 {
-
-
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    
-    // UNTUK AKSES LOGIN 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
-     * Display a listing of the resource.
+     * Show the application dashboard.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
     {
