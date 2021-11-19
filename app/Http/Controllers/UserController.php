@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use App\UsersModels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -20,15 +20,31 @@ class UserController extends Controller
         $getUsers = UsersModels::all();
         $hitungUser = $getUsers->count();
         // dd($hitungUsers);
-        return view('layout.user.index',compact('hitungUser','getUsers','userId'));
+        return view('layout.user.index',compact('hitungUser','getUsers'));
     }
 
 
     public function updates($id)
     {
-        //
+        
         $userId = UsersModels::findOrFail($id);
-        return view('layout.user.index',compact('userId'));
+        return view('layout.user.edit',compact('userId'));
+  
+    }
+
+    public function updatesProfile()
+    {
+        
+        // = UsersModels::findOrFail($id);
+        $userId = Auth::user();
+        if($userId){
+            // $cekKota = Jasas::where('city_id',Auth::user()->city_id)->first();
+            $userId = UsersModels::where('id',$userId->id)->first();
+           
+        }else{
+            $userId = null;
+        }
+        return view('layout.user.edit-profile',compact('userId'));
   
     }
        
@@ -39,9 +55,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function tambahuser()
     {
         //
+        return view('layout.user.add');
+
     }
 
     /**
@@ -84,10 +102,84 @@ class UserController extends Controller
      * @param  \App\UsersModels  $usersModels
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UsersModels $usersModels)
+    public function update(Request $request,$id)
     {
         //
+        $this->validate($request, [
+          
+            'name'     => 'required',
+            'email' => 'required'
+
+        ]);
+
+        //upload image
+        $users = UsersModels::find($id);
+        $users->name = $request->get('name');
+        $users->email = $request->get('email');
+        $users->level = $request->get('level');
+        $users->password = Hash::make($request->get('password'));
+
+        
+      
+        $users->save();
+
+
+       
+        if($users){
+            //redirect dengan pesan sukses
+            return redirect()->route('users')->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->route('users')->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
+
+
+    public function updateProfiles(Request $request,$id)
+    {
+        //
+        $this->validate($request, [
+          
+            'name'     => 'required',
+            'email' => 'required',
+            'image'     => 'image|mimes:png,jpg,jpeg,svg',
+
+        ]);
+
+        //upload image
+        $users = UsersModels::find($id);
+        $users->name = $request->get('name');
+        $users->email = $request->get('email');
+        $users->level = $request->get('level');
+        $users->password = Hash::make($request->get('password'));
+
+        if ($request->hasFile('image')) {
+            // $post->delete_image();
+           
+            if($request->file('image') == ""){
+                $gambar = $request->file('image_old');
+            }else{
+                 $gambar = $request->file('image');
+            }
+            // echo $photo_profile;exit;
+            $name = rand(1000, 9999) . $gambar->getClientOriginalName();
+            $gambar->move('image', $name);
+            $users->image = $name;
+        }
+      
+        $users->save();
+
+
+       
+        if($users){
+            //redirect dengan pesan sukses
+            return redirect()->back()->with(['success' => 'Data Berhasil Disimpan!']);
+        }else{
+            //redirect dengan pesan error
+            return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -103,11 +195,12 @@ class UserController extends Controller
      // PROSES TAMBAH DATA USer
      public function prosestambahuser(Request $request)
     {
-        //  $this->validate($request, [
+         $this->validate($request, [
           
-        //     'judul'     => 'required',
-        //     'status'   => 'required'
-        // ]);
+            'name'     => 'required',
+            'email' => 'required'
+
+        ]);
 
         //upload image
         $users = new UsersModels();
@@ -138,10 +231,10 @@ class UserController extends Controller
 
         if($users){
             //redirect dengan pesan sukses
-            return redirect()->route('users')->with(['success' => 'Data Berhasil Di Update!']);
+            return redirect()->route('users')->with(['success' => 'Data Berhasil Di Hapus!']);
         }else{
             //redirect dengan pesan error
-            return redirect()->route('users')->with(['error' => 'Data Gagal Di Update!']);
+            return redirect()->route('users')->with(['error' => 'Data Gagal Di Hapus!']);
         }
     }
 }

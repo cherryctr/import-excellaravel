@@ -61,9 +61,15 @@
         <li class="nav-item dropdown px-1">
        
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          <!-- <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle border right-img dropdown-toggle"> -->
-          {{ Auth::user()->name }}
+          @if (Auth::user()->image == TRUE)
+              {{ Auth::user()->name }}
+          @else
+            <img src="{{ asset('image/'. Auth::user()->image ) }}" width="40" height="40" class="rounded-circle border right-img">
+          @endif
+          
+         
           </a>
+
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 
           @if (Auth::user()->level == 0)
@@ -72,8 +78,11 @@
           <span class="dropdown-header">{{ Auth::user()->email }}&nbsp; |  &nbsp;User</span>
           @endif
             
-           
-            <div class="dropdown-divider"></div>
+        
+
+          <div class="dropdown-divider"></div>
+          <a href="{{ url('user/profile/'.Auth::user()->id) }}" class="dropdown-item dropdown-footer">Edit Profile</a>
+          <div class="dropdown-divider"></div>
             <a href="{{ url('proses/logout') }}" class="dropdown-item dropdown-footer">Log Out</a>
           </div>
         </li>

@@ -45,10 +45,22 @@ Route::get('/getVillages/{district_id}', [App\Http\Controllers\HomeController::c
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 // ADD USER
 Route::post('/add/post/users', [App\Http\Controllers\UserController::class, 'prosestambahuser'])->name('postdatauser');
-// DeleteUSER
+Route::get('/add/users', [App\Http\Controllers\UserController::class, 'tambahuser'])->name('postuser');
 
+// DeleteUSER
 Route::get('/user/hapus/{id}',[App\Http\Controllers\UserController::class, 'hapusDataUser'])->name('hapusdatauser');
+
+// EDIT USER
+Route::get('/user/edit/{id}',[App\Http\Controllers\UserController::class, 'updates'])->name('updatedatauser');
+Route::post('/user/proses/edit/{id}',[App\Http\Controllers\UserController::class, 'update'])->name('editdatauser');
+
+
+// Edit profile
+Route::get('/user/profile/{id}',[App\Http\Controllers\UserController::class, 'updatesProfile'])->name('updatedataprofile');
+
+Route::post('/user-profile/proses/edit/{id}',[App\Http\Controllers\UserController::class, 'updateProfiles'])->name('editdatauserprofiles');
+

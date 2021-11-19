@@ -75,16 +75,16 @@
                 <table id="example1" class="table table-bordered table-striped">
                
 
-                  <div class="dropdown">
+                  
                     
-                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                  <a href="{{ route('postuser') }}" type="button" class="btn btn-primary" >
                   <i class="fa fa-plus" aria-hidden="true"></i>
-                  Tambah Data</button>&nbsp;  
+                  Tambah Data</a>&nbsp;  
 
                  
 
                 
-                  </div>
+                  
                
                 <br><br>
                 <thead>
@@ -113,8 +113,8 @@
                     <td> <a href="#" class="badge badge-info">User</a></td>
                     @endif
                     <td> <a href="{{ url('/user/hapus/' . $post->id) }}" type="button" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete</a>
-                    <button type="button" class="btn btn-warning text-white">
-                    <i class="fa fa-edit"></i>Edit</button></td>
+                    <a href="{{ url('/user/edit/' . $post->id) }}" type="button" class="btn btn-warning text-white">
+                    <i class="fa fa-edit"></i>Edit</a></td>
                     
                   </tr>
                   <?php $i++; ?>
