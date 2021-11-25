@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Illuminate\Support\Facades\Validator;
 use App\UsersModels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -102,13 +103,16 @@ class UserController extends Controller
      * @param  \App\UsersModels  $usersModels
      * @return \Illuminate\Http\Response
      */
+
+     
     public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
           
             'name'     => 'required',
-            'email' => 'required'
+            
+            'email' => 'required|email|unique:users',
 
         ]);
 
@@ -138,13 +142,19 @@ class UserController extends Controller
     public function updateProfiles(Request $request,$id)
     {
         //
+
+    
         $this->validate($request, [
           
             'name'     => 'required',
-            'email' => 'required',
+           
             'image'     => 'image|mimes:png,jpg,jpeg,svg',
 
-        ]);
+        ],
+        [
+            'email.required' => 'The User Email must be a valid email address.'
+        ]
+    );
 
         //upload image
         $users = UsersModels::find($id);
@@ -157,16 +167,24 @@ class UserController extends Controller
             // $post->delete_image();
            
             if($request->file('image') == ""){
-                $gambar = $request->file('image_old');
+                $image = $request->file('image_old');
             }else{
-                 $gambar = $request->file('image');
+                $image = $request->file('image');
             }
             // echo $photo_profile;exit;
-            $name = rand(1000, 9999) . $gambar->getClientOriginalName();
-            $gambar->move('image', $name);
+            $name = rand(1000, 9999) . $image->getClientOriginalName();
+            $image->move('image', $name);
             $users->image = $name;
         }
-      
+        
+
+        // if(!$users->name == "" | $users->email == "") {
+        //     return redirect()->back()->with(['error' => 'Data Gagal Harus ada yang']);
+        // }else{
+
+        
+
+
         $users->save();
 
 
@@ -178,7 +196,9 @@ class UserController extends Controller
             //redirect dengan pesan error
             return redirect()->back()->with(['error' => 'Data Gagal Disimpan!']);
         }
+
     }
+
 
 
     /**

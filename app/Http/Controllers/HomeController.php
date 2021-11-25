@@ -37,7 +37,7 @@ class HomeController extends Controller
                     ->select('id','name')->where('id',36)->get();
     //    
         $city= City::orderby("name","asc")
-                    ->select('id','name')->whereIn('id',[3671,3674])->get();
+                    ->select('id','name')->whereIn('id',[3603])->get();
 
        
         return view('layout.dashboard.index',compact('provincess','city'));

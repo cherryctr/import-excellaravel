@@ -61,7 +61,7 @@
         <li class="nav-item dropdown px-1">
        
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-          @if (Auth::user()->image == TRUE)
+          @if (Auth::user()->image == NULL)
               {{ Auth::user()->name }}
           @else
             <img src="{{ asset('image/'. Auth::user()->image ) }}" width="40" height="40" class="rounded-circle border right-img">
