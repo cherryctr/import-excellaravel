@@ -223,5 +223,41 @@ $(document).ready(function() {
               })
          })
      </script>
+
+<script>
+$(function(){
+
+    
+    $('#data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: "home/json",
+        columns: [
+            { data: 'kategoris.nama_kategori', name: 'kategoris.nama_kategori' },
+            { data: 'nama', name: 'nama' },
+            { data: 'kota.name', name: 'kota.name' },
+            { data: 'kelurahan.name', name: 'kelurahan.name' },
+            { data: 'kecamatan.name', name: 'kecamatan.name' },
+            { data: 'alamat', name: 'alamat' },
+           
+            {
+                data: 'id_rumah',
+                name: 'id_rumah',
+                render: function(value, param, data) {
+                    return '<div class="btn-group">' +
+                        '<a class="btn btn-sm btn-primary" href="/admin/news/' + value +
+                        '/edit"><i class="fas fa-edit"></i></a> ' +
+
+                        '<button class="btn btn-sm btn-danger" type="button" onClick="deleteConfirm(' +
+                        value + ')"><i class="fas fa-trash"></i></button>' +
+                        '</div> ';
+                }
+            }
+
+           
+        ]
+    });
+});
+</script>
 </body>
 </html>

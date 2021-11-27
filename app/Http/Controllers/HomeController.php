@@ -2,6 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Yajra\DataTables\Html\Button;
+use Yajra\DataTables\Html\Column;
+use Yajra\DataTables\Html\Editor\Editor;
+use Yajra\DataTables\Html\Editor\Fields;
+use Yajra\DataTables\Services\DataTable;
+use Yajra\Datatables\Datatables;
+
+
+
 use Illuminate\Http\Request;
 use App\HomeModel;
 use App\Kategori;
@@ -44,6 +53,7 @@ class HomeController extends Controller
 
 
         $dataAll = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
+       
 
         $dataAngkaMasjid = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',1)->get();
         $angkaMasjid = $dataAngkaMasjid->count();
@@ -156,14 +166,24 @@ public function getVillages($district_id){
     }
 
 
-    // public function data(Request $request)
-    // {
-    //     //
-    //     $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
-    //     return datatables()->of($data)->make(true);
+    public function data(Request $request)
+    {
+        //
+        
+        $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
+        return Datatables()->of($data)->make(true);
 
-    //     return view('layout.dashboard.index');
-    // }
+        
+    }
+
+    public function dataindex(Request $request)
+    {
+        //
+        
+        return view('layout.dashboard.index');
+
+        
+    }
 
     /**
      * Display the specified resource.

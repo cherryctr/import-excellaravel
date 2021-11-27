@@ -18,6 +18,16 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+Route::resource('datatables', 'HomeController', 
+[
+    'data'  => 'datatables.data',
+    'dataindex' => 'datatables',
+]);
+
+
+Route::get('dataindex',[App\Http\Controllers\HomeController::class, 'dataindex']);
+Route::get('home/json',[App\Http\Controllers\HomeController::class, 'data']);
+
 Route::get('/proses/logout',  [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 
 Route::group(['middleware' => 'auth'], function() {
