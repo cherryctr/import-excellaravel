@@ -24,7 +24,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaMasjid }}</h3>
                     <span>MASJID</span>
                     </div>
                     <div class="align-self-center">
@@ -42,7 +42,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaMushola }}</h3>
                     <span>MUSHOLA</span>
                     </div>
                     <div class="align-self-center">
@@ -60,7 +60,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaGerejaKristen }}</h3>
                     <span>GEREJA KERISTEN</span>
                     </div>
                     <div class="align-self-center">
@@ -79,7 +79,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaGerejaKatolik }}</h3>
                     <span>GEREJA KATOLIK</span>
                     </div>
                     <div class="align-self-center">
@@ -98,7 +98,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaPureHindu }}</h3>
                     <span>PURE HINDU</span>
                     </div>
                     <div class="align-self-center">
@@ -116,7 +116,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaPureHindu }}</h3>
                     <span>PURE BUDHA</span>
                     </div>
                     <div class="align-self-center">
@@ -134,7 +134,7 @@
                 <div class="card-body">
                 <div class="media d-flex">
                     <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
+                    <h3 class="danger">{{ $angkaKelenteng }}</h3>
                     <span>KELENTENG KONGHUCHU</span>
                     </div>
                     <div class="align-self-center">
@@ -146,23 +146,7 @@
             </div>
         </div>
 
-        <div class="col-xl-3 col-sm-6 col-12">
-            <div class="card">
-            <div class="card-content">
-                <div class="card-body">
-                <div class="media d-flex">
-                    <div class="media-body text-left">
-                    <h3 class="danger">278</h3>
-                    <span>DAFTAR USER</span>
-                    </div>
-                    <div class="align-self-center">
-                    <img class="gambar-side" src="{{ asset('image/man.png') }}" alt="">
-                    </div>
-                </div>
-                </div>
-            </div>
-            </div>
-        </div>
+        
      
         </div>
     
@@ -188,7 +172,7 @@
                 <table id="example1" class="table table-bordered table-striped">
                
 
-                  <div class="dropdown">
+                  <!-- <div class="dropdown">
                     
                   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                   <i class="fa fa-plus" aria-hidden="true"></i>
@@ -205,7 +189,7 @@
                       <a class="dropdown-item" href="#"><img class="img-drop" src="{{ asset('image/excel.png') }}" alt=""> EXCEL</a>
                       <a class="dropdown-item" href="#"><img class="img-drop" src="{{ asset('image/pdf-file.png') }}" alt=""> PDF</a>
                     </div>
-                  </div>
+                  </div> -->
                
                 <br><br>
                 <thead>

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\HomeModel;
-
+use App\Kategori;
+use App\Models\Rumah;
 use Illuminate\Support\Facades\DB;
 use App\Models\Province;
 use App\Models\City;
@@ -37,10 +38,57 @@ class HomeController extends Controller
                     ->select('id','name')->where('id',36)->get();
     //    
         $city= City::orderby("name","asc")
-                    ->select('id','name')->whereIn('id',[3603])->get();
+                    ->select('id','name')->where('id',3603)->get();
+
+        $kategori = Kategori::all();
+
+
+        $dataAll = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
+
+        $dataAngkaMasjid = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',1)->get();
+        $angkaMasjid = $dataAngkaMasjid->count();
+
+        $dataAngkaMushola = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',2)->get();
+        $angkaMushola = $dataAngkaMushola->count();
+
+        $dataGerejaKristen = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',3)->get();
+        $angkaGerejaKristen = $dataGerejaKristen->count();
+
+        $dataGerejaKatolik = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',4)->get();
+        $angkaGerejaKatolik = $dataGerejaKatolik->count();
+
+        $dataPureHindu = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',5)->get();
+        $angkaPureHindu = $dataPureHindu->count();
+
+        $dataPureBudha = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',6)->get();
+        $angkaPureBudha = $dataPureBudha->count();
+
+        $dataKelenteng = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',7)->get();
+        $angkaKelenteng = $dataKelenteng->count();
 
        
-        return view('layout.dashboard.index',compact('provincess','city'));
+
+    
+        // ->join('indonesia_cities', 'rumah_ibadah.city_id', '=', 'indonesia_cities.id')
+        // ->where('kategori.id','=',1)
+        // // ->select('rumah.*', 'contacts.phone', 'orders.price')
+        // ->get();
+    
+       
+        return view('layout.dashboard.index',compact(
+            'provincess',
+            'city',
+            'kategori',
+            'dataAll',
+            'angkaMasjid',
+            'angkaMushola',
+            'angkaGerejaKristen',
+            'angkaGerejaKatolik',
+            'angkaPureHindu',
+            'angkaPureBudha',
+            'angkaKelenteng',
+        
+        ));
     }
 
 
@@ -84,6 +132,16 @@ public function getVillages($district_id){
     public function create()
     {
         //
+        //GET ALL PROVINCE
+        $provincess = Province::orderby("name","asc")
+                    ->select('id','name')->where('id',36)->get();
+    //    
+        $city= City::orderby("name","asc")
+                    ->select('id','name')->where('id',3603)->get();
+
+        
+        $kategori = Kategori::all();
+        return view('layout.rumah.add',compact('provincess','city','kategori'));
     }
 
     /**
@@ -96,6 +154,16 @@ public function getVillages($district_id){
     {
         //
     }
+
+
+    // public function data(Request $request)
+    // {
+    //     //
+    //     $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
+    //     return datatables()->of($data)->make(true);
+
+    //     return view('layout.dashboard.index');
+    // }
 
     /**
      * Display the specified resource.
