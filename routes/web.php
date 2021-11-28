@@ -18,15 +18,26 @@
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/hapus/{id_rumah}',[App\Http\Controllers\RumahController::class,'delete'])->name('hapusdatarumah');
+
+// GADI PAKAI TAPI MASIH DI BUTUHIN
+Route::get('alert/{AlertType}',[App\Http\Controllers\RumahController::class,'alert'])->name('alert');
+Route::get('/add/rumahibadah', [App\Http\Controllers\RumahController::class, 'create'])->name('createHome');
+Route::post('/post/add/rumahibadah', [App\Http\Controllers\RumahController::class, 'prosestambahrumah'])->name('createHomeIbadah');
+Route::get('/edit/rumahibadah/{id_rumah}', [App\Http\Controllers\RumahController::class, 'editData'])->name('editHome');
+Route::post('/rumah/edit/{id_rumah}/',[App\Http\Controllers\RumahController::class, 'updateData'])->name('updaterumah');
+
 Route::resource('datatables', 'HomeController', 
 [
     'data'  => 'datatables.data',
     'dataindex' => 'datatables',
 ]);
 
+Route::resource('custom-filter', 'HomeController');
 
 Route::get('dataindex',[App\Http\Controllers\HomeController::class, 'dataindex']);
-Route::get('home/json',[App\Http\Controllers\HomeController::class, 'data']);
+Route::get('home/json/',[App\Http\Controllers\HomeController::class, 'data']);
 
 Route::get('/proses/logout',  [App\Http\Controllers\Auth\LoginController::class, 'logout']);
 

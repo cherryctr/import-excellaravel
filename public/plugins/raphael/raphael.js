@@ -153,12 +153,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - all (array) (first 3 or 4 elements in the array are equal to [containerID, width, height] or [x, y, width, height]. The rest are element descriptions in format {type: type, <attributes>}). See @Paper.add.
      - callback (function) #optional callback function which is going to be executed in the context of newly created paper
      * or
-     - onReadyCallback (function) function that is going to be called on DOM ready event. You can also subscribe to this event via Eve’s “DOMLoad” event. In this case method returns `undefined`.
+     - onReadyCallback (function) function that is going to be called on DOM ready event. You can also subscribe to this event via Eve's “DOMLoad” event. In this case method returns `undefined`.
      = (object) @Paper
      > Usage
      | // Each of the following examples create a canvas
      | // that is 320px wide by 200px high.
-     | // Canvas is created at the viewport’s 10,50 coordinate.
+     | // Canvas is created at the viewport's 10,50 coordinate.
      | var paper = Raphael(10, 50, 320, 200);
      | // Canvas is created at the top left corner of the #notepad element
      | // (or its top right corner in dir="rtl" elements)
@@ -742,7 +742,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      o     g (number) green,
      o     b (number) blue,
      o     hex (string) color in HTML/CSS format: #••••••,
-     o     error (boolean) `true` if string can’t be parsed,
+     o     error (boolean) `true` if string can't be parsed,
      o     h (number) hue,
      o     s (number) saturation,
      o     v (number) value (brightness),
@@ -987,7 +987,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      #     <li>Colour name (“<code>red</code>”, “<code>green</code>”, “<code>cornflowerblue</code>”, etc)</li>
      #     <li>#••• — shortened HTML colour: (“<code>#000</code>”, “<code>#fc0</code>”, etc)</li>
      #     <li>#•••••• — full length HTML colour: (“<code>#000000</code>”, “<code>#bd2300</code>”)</li>
-     #     <li>rgb(•••, •••, •••) — red, green and blue channels’ values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
+     #     <li>rgb(•••, •••, •••) — red, green and blue channels' values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
      #     <li>rgb(•••%, •••%, •••%) — same as above, but in %: (“<code>rgb(100%,&nbsp;175%,&nbsp;0%)</code>”)</li>
      #     <li>hsb(•••, •••, •••) — hue, saturation and brightness values: (“<code>hsb(0.5,&nbsp;0.25,&nbsp;1)</code>”)</li>
      #     <li>hsb(•••%, •••%, •••%) — same as above, but in %</li>
@@ -1000,7 +1000,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      o     g (number) green,
      o     b (number) blue
      o     hex (string) color in HTML/CSS format: #••••••,
-     o     error (boolean) true if string can’t be parsed
+     o     error (boolean) true if string can't be parsed
      o }
     \*/
     R.getRGB = cacher(function (colour) {
@@ -2964,7 +2964,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      * You can add your own method to elements. This is useful when you want to hack default functionality or
      * want to wrap some common transformation or attributes in one method. In difference to canvas methods,
-     * you can redefine element method at any time. Expending element methods wouldn’t affect set.
+     * you can redefine element method at any time. Expending element methods wouldn't affect set.
      > Usage
      | Raphael.el.red = function () {
      |     this.attr({fill: "#f00"});
@@ -3553,7 +3553,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      [ method ]
      **
      * Creates array-like object to keep and operate several elements at once.
-     * Warning: it doesn’t create any elements for itself in the page, it just groups existing elements.
+     * Warning: it doesn't create any elements for itself in the page, it just groups existing elements.
      * Sets act as pseudo elements — all methods available to an element can be used on a set.
      = (object) array-like object that represents set of elements
      **
@@ -3824,7 +3824,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.isPointInside
      [ method ]
      **
-     * Determine if given point is inside this element’s shape
+     * Determine if given point is inside this element's shape
      **
      > Parameters
      **
@@ -3904,7 +3904,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      * Return set of elements that create glow-like effect around given element. See @Paper.set.
      *
-     * Note: Glow is not connected to the element. If you change element attributes it won’t adjust itself.
+     * Note: Glow is not connected to the element. If you change element attributes it won't adjust itself.
      **
      > Parameters
      **
@@ -5183,7 +5183,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Set.isPointInside
      [ method ]
      **
-     * Determine if given point is inside this set’s elements
+     * Determine if given point is inside this set's elements
      **
      > Parameters
      **
@@ -5206,7 +5206,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Raphael.registerFont
      [ method ]
      **
-     * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón’s font file.
+     * Adds given font to the registered set of fonts for Raphaël. Should be used as an internal call from within Cufón's font file.
      * Returns original parameter, so it could be used with chaining.
      # <a href="http://wiki.github.com/sorccu/cufon/about">More about Cufón and how to convert your font form TTF, OTF, etc to JavaScript file.</a>
      **
@@ -6187,7 +6187,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
          **
          * Gives you a reference to the DOM object, so you can assign event handlers or just mess around.
          **
-         * Note: Don’t mess with it.
+         * Note: Don't mess with it.
          > Usage
          | // draw a circle at coordinate 10,10 with radius of 10
          | var c = paper.circle(10, 10, 10);
@@ -6298,7 +6298,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - deg (number) angle in degrees
      - cx (number) #optional x coordinate of the centre of rotation
      - cy (number) #optional y coordinate of the centre of rotation
-     * If cx & cy aren’t specified centre of the shape is used as a point of rotation.
+     * If cx & cy aren't specified centre of the shape is used as a point of rotation.
      = (object) @Element
     \*/
     elproto.rotate = function (deg, cx, cy) {
@@ -6332,7 +6332,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      - sy (number) vertical scale amount
      - cx (number) #optional x coordinate of the centre of scale
      - cy (number) #optional y coordinate of the centre of scale
-     * If cx & cy aren’t specified centre of the shape is used instead.
+     * If cx & cy aren't specified centre of the shape is used instead.
      = (object) @Element
     \*/
     elproto.scale = function (sx, sy, cx, cy) {
@@ -6385,7 +6385,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      [ method ]
      **
      * Adds transformation to the element which is separate to other attributes,
-     * i.e. translation doesn’t change `x` or `y` of the rectange. The format
+     * i.e. translation doesn't change `x` or `y` of the rectange. The format
      * of transformation string is similar to the path string syntax:
      | "t100,100r30,100,100s2,2,100,100r45s1.5"
      * Each letter is a command. There are four commands: `t` is for translate, `r` is for rotate, `s` is for
@@ -6412,7 +6412,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      | console.log(el.transform());
      > Parameters
      - tstr (string) #optional transformation string
-     * If tstr isn’t specified
+     * If tstr isn't specified
      = (string) current transformation string
      * else
      = (object) @Element
@@ -6530,12 +6530,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      **
      * Sets the attributes of the element.
      > Parameters
-     - attrName (string) attribute’s name
+     - attrName (string) attribute's name
      - value (string) value
      * or
      - params (object) object of name/value pairs
      * or
-     - attrName (string) attribute’s name
+     - attrName (string) attribute's name
      * or
      - attrNames (array) in this case method returns array of current values for given attribute names
      = (object) @Element if attrsName & value or params are passed in.
@@ -6586,15 +6586,15 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * gradient from white to black or “`r(0.25, 0.75)#fff-#000`” – gradient from white to black with focus point
      * at 0.25, 0.75. Focus point coordinates are in 0..1 range. Radial gradients can only be applied to circles and ellipses.
      > Path String
-     # <p>Please refer to <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path’s data attribute’s format are described in the SVG specification.">SVG documentation regarding path string</a>. Raphaël fully supports it.</p>
+     # <p>Please refer to <a href="http://www.w3.org/TR/SVG/paths.html#PathData" title="Details of a path's data attribute's format are described in the SVG specification.">SVG documentation regarding path string</a>. Raphaël fully supports it.</p>
      > Colour Parsing
      # <ul>
      #     <li>Colour name (“<code>red</code>”, “<code>green</code>”, “<code>cornflowerblue</code>”, etc)</li>
      #     <li>#••• — shortened HTML colour: (“<code>#000</code>”, “<code>#fc0</code>”, etc)</li>
      #     <li>#•••••• — full length HTML colour: (“<code>#000000</code>”, “<code>#bd2300</code>”)</li>
-     #     <li>rgb(•••, •••, •••) — red, green and blue channels’ values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
+     #     <li>rgb(•••, •••, •••) — red, green and blue channels' values: (“<code>rgb(200,&nbsp;100,&nbsp;0)</code>”)</li>
      #     <li>rgb(•••%, •••%, •••%) — same as above, but in %: (“<code>rgb(100%,&nbsp;175%,&nbsp;0%)</code>”)</li>
-     #     <li>rgba(•••, •••, •••, •••) — red, green and blue channels’ values: (“<code>rgba(200,&nbsp;100,&nbsp;0, .5)</code>”)</li>
+     #     <li>rgba(•••, •••, •••, •••) — red, green and blue channels' values: (“<code>rgba(200,&nbsp;100,&nbsp;0, .5)</code>”)</li>
      #     <li>rgba(•••%, •••%, •••%, •••%) — same as above, but in %: (“<code>rgba(100%,&nbsp;175%,&nbsp;0%, 50%)</code>”)</li>
      #     <li>hsb(•••, •••, •••) — hue, saturation and brightness values: (“<code>hsb(0.5,&nbsp;0.25,&nbsp;1)</code>”)</li>
      #     <li>hsb(•••%, •••%, •••%) — same as above, but in %</li>
@@ -6669,7 +6669,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.toFront
      [ method ]
      **
-     * Moves the element so it is the closest to the viewer’s eyes, on top of other elements.
+     * Moves the element so it is the closest to the viewer's eyes, on top of other elements.
      = (object) @Element
     \*/
     elproto.toFront = function () {
@@ -6686,7 +6686,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
      * Element.toBack
      [ method ]
      **
-     * Moves the element so it is the furthest from the viewer’s eyes, behind other elements.
+     * Moves the element so it is the furthest from the viewer's eyes, behind other elements.
      = (object) @Element
     \*/
     elproto.toBack = function () {
@@ -8180,7 +8180,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      * eve.separator
      [ method ]
 
-     * If for some reasons you don’t like default separators (`.` or `/`) you can specify yours
+     * If for some reasons you don't like default separators (`.` or `/`) you can specify yours
      * here. Be aware that if you pass a string longer than one character it will be treated as
      * a list of characters.
 
@@ -8207,7 +8207,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      - name (string) name of the event, dot (`.`) or slash (`/`) separated, with optional wildcards
      - f (function) event handler function
      **
-     - name (array) if you don’t want to use separators, you can use array of strings
+     - name (array) if you don't want to use separators, you can use array of strings
      - f (function) event handler function
      **
      = (function) returned function accepts a single numeric parameter that represents z-index of the handler. It is an optional feature and only used when you need to ensure that some subset of handlers will be invoked in a given order, despite of the order of assignment. 
@@ -8218,7 +8218,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      * This will ensure that `catchIt` function will be called before `eatIt`.
      *
      * If you want to put your handler before non-indexed handlers, specify a negative value.
-     * Note: I assume most of the time you don’t need to worry about z-index, but it’s nice to have this feature “just in case”.
+     * Note: I assume most of the time you don't need to worry about z-index, but it's nice to have this feature “just in case”.
     \*/
     eve.on = function (name, f) {
         if (typeof f != "function") {
@@ -8291,7 +8291,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c)
      **
      = (string) name of the event, if `subname` is not specified
      * or
-     = (boolean) `true`, if current event’s name contains `subname`
+     = (boolean) `true`, if current event's name contains `subname`
     \*/
     eve.nt = function (subname) {
         var cur = isArray(current_event) ? current_event.join(".") : current_event;

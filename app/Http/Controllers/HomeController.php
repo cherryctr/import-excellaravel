@@ -76,7 +76,8 @@ class HomeController extends Controller
         $dataKelenteng = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('kategori_id')->where('kategori_id',7)->get();
         $angkaKelenteng = $dataKelenteng->count();
 
-       
+        
+      
 
     
         // ->join('indonesia_cities', 'rumah_ibadah.city_id', '=', 'indonesia_cities.id')
@@ -169,11 +170,36 @@ public function getVillages($district_id){
     public function data(Request $request)
     {
         //
-        
-        $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->get();
-        return Datatables()->of($data)->make(true);
 
+        $rumah = new Rumah();
+       
+        $rumah->id = $request->get('id');
+        $rumah->district_id =  $request->get('district_id');
+        $rumah->villages_id = $request->get('villages_id');
         
+        if ($request->ajax()) {
+            
+
+            if($rumah->id != ""){
+                $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('id','nama','kategori_id','district_id','villages_id','alamat')->where('id',$rumah->id)->get();
+               
+           
+            }
+            elseif($rumah->district_id != ""){
+                $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('id','nama','kategori_id','district_id','villages_id','alamat')->where('district_id',$rumah->district_id)->get();
+               
+           
+            }else{
+                $data = Rumah::with('kota','kecamatan','kelurahan','kategoris')->select('id','nama','kategori_id','district_id','villages_id','alamat')
+                
+                ->get();
+            
+            return Datatables()->of($data)->make(true);
+        }
+
+          
+
+    }
     }
 
     public function dataindex(Request $request)

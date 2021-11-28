@@ -159,7 +159,15 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-12">
-           
+          @if (\Session::has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  {!! \Session::get('success') !!}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                    
+            @endif
             <!-- /.card -->
 
             <div class="card">
@@ -169,26 +177,20 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-
-              <div class="col-md-4">
-              <div class="form-group">
-                            <label for="email">{{ __('Pilih Kabupaten') }}</label>
-
-                            
-                            <select class="form-control" id="city" name="id">
-                                <option> --- PILIH KABUPATEN--- </option>
-                                @foreach ($city as $prov)
-                                    <option value="{{ $prov->id }}">{{ $prov->name }}</option>
-                                @endforeach 
-                                
-                            </select>
-                            
+                <div class="row mb-4">
+                        <div class="col-md-12">
+                            <a href="{{ route('createHome') }}" class="btn btn-primary">
+                                <i class="fa fa-plus"></i>
+                                Tambah Data
+                            </a>
                         </div>
-              </div>
-
+                    </div>
+              
               <div class="divider"></div>
-              <br>
-              <table class="table table-bordered" id="data-table">
+            
+                <div class="table-responsive mt-5">
+                    <div class="col-md-12">
+                    <table class="table table-bordered" id="example1">
                     <thead>
                         <tr>
                           
@@ -197,15 +199,37 @@
                            
                             <th>Kabupaten</th>
                             
-
-                            <th>Kelurahan</th>
                             <th>Kecamatan</th>
+                            <th>Kelurahan</th>
+                            
                             <th>Alamat</th>
                             <th>Action</th>
                             
                         </tr>
                     </thead>
+
+                    <tbody>
+                        @foreach($dataAll as $dat)
+                        <tr>
+                            <td>{{ $dat->kategoris->nama_kategori }}</td>
+                            <td>{{ $dat->nama }}</td>
+                            <td>{{ $dat->kota->name }}</td>
+                            <td>{{ $dat->kecamatan->name }}</td>
+                            <td>{{ $dat->kelurahan->name }}</td>
+                            <td>{{ $dat->alamat }}</td>
+                            <td>
+                            <div class="btn-group">
+                                            <a class="btn btn-sm btn-primary" href="{{  url('edit/rumahibadah/'.$dat->id_rumah) }}"><i class="fas fa-edit"></i></a> 
+                                            &nbsp;
+                                            <a href="{{ url('/hapus/'.$dat->id_rumah) }}" class="btn btn-sm btn-danger" type="button" ><i class="fas fa-trash"></i></a>
+                                            </div>
+                                </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
                 </table>
+                    </div>
+                </div>
               </div>
               <!-- /.card-body -->
             </div>
@@ -219,10 +243,29 @@
     </section>
     <!-- /.content -->
     @include('layout.modal.modal')
-      
+    
     </div>
     </div>
 
     
 </div>
-@endsection
+@stop
+@push('scripts')
+<script>
+
+function deleteConfirm(id_rumah) {
+            swal({
+                    title: "Kamu Yakin ?",
+                    text: "Ini juga akan menghapus data ini !",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((dt) => {
+                    if (dt) {
+                        window.location.href = "{{ url('admin/news') }}/" + id + "/delete";
+                    }
+                });
+        }
+</script>
+@endpush

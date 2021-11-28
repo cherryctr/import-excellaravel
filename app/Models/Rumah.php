@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Model;
 class Rumah extends Model
 {
     //
+    protected $primaryKey = 'id_rumah';
     protected $table= "rumah_ibadah";
     protected $fillable = [
      'id','nama','kategori_id','city_id','district_id','villages_id','alamat'
@@ -21,7 +22,7 @@ class Rumah extends Model
 
    public function kota()
    {
-       return $this->hasOne(City::class,'id');
+       return $this->belongsTo(City::class,'id');
    }
 
    public function kecamatan()

@@ -7,9 +7,16 @@
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.2.1/sweetalert2.min.css" integrity="sha512-OkYLbkJ4DB7ewvcpNLF9DSFmhdmxFXQ1Cs+XyjMsMMC94LynFJaA9cPXOokugkmZo6O6lwZg+V5dwQMH4S5/3g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
   <!-- DataTables -->
+
+ 
+    <script src="https://nightly.datatables.net/buttons/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+    <script src="https://nightly.datatables.net/buttons/js/buttons.html5.min.js"></script>
   <link rel="stylesheet" href="{{ asset('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
   <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
@@ -18,7 +25,15 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
   <!-- CSS SELECT2 -->
+  
+
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+ 
+
+  
+
+  
 </head>
 <!-- INI BAWAAN TEMPLATE -->
 <!-- <body class="hold-transition sidebar-mini"> -->
@@ -64,13 +79,20 @@
 <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
 <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
 <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
-<!-- <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script> -->
+<script src="{{ asset('plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('dist/js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('dist/js/demo.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.2.1/sweetalert2.all.min.js
+
+
+
+"></script>
+
 <!-- Page specific script -->
 <script>
 
@@ -81,7 +103,8 @@ $(document).ready(function() {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": true, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
-      "lengthMenu": [[5, 10, 25, 50, -1], [5,10, 25, 50, "All"]]
+      "lengthMenu": [[5, 10, 25, 50, -1], [5,10, 25, 50, "All"]],
+      
 
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2').DataTable({
@@ -223,41 +246,24 @@ $(document).ready(function() {
               })
          })
      </script>
-
-<script>
-$(function(){
-
-    
-    $('#data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "home/json",
-        columns: [
-            { data: 'kategoris.nama_kategori', name: 'kategoris.nama_kategori' },
-            { data: 'nama', name: 'nama' },
-            { data: 'kota.name', name: 'kota.name' },
-            { data: 'kelurahan.name', name: 'kelurahan.name' },
-            { data: 'kecamatan.name', name: 'kecamatan.name' },
-            { data: 'alamat', name: 'alamat' },
-           
-            {
-                data: 'id_rumah',
-                name: 'id_rumah',
-                render: function(value, param, data) {
-                    return '<div class="btn-group">' +
-                        '<a class="btn btn-sm btn-primary" href="/admin/news/' + value +
-                        '/edit"><i class="fas fa-edit"></i></a> ' +
-
-                        '<button class="btn btn-sm btn-danger" type="button" onClick="deleteConfirm(' +
-                        value + ')"><i class="fas fa-trash"></i></button>' +
-                        '</div> ';
-                }
-            }
-
-           
+    <script>
+        $(document).ready( function () {
+    var table = $('#example1').dataTable();
+    var tableTools = new $.fn.dataTable.TableTools( table, {
+        "buttons": [
+            "copy",
+            "csv",
+            "xls",
+            "pdf",
+            { "type": "print", "buttonText": "Print me!" }
         ]
-    });
-});
-</script>
+    } );
+      
+    $( tableTools.fnContainer() ).insertAfter('div.card-title');
+} );
+    </script>
+
+
+
 </body>
 </html>
